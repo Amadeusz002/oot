@@ -1,18 +1,21 @@
 package pl.edu.agh.school.persistence;
 
+import pl.edu.agh.logger.Logger;
 import pl.edu.agh.school.SchoolClass;
 import pl.edu.agh.school.Teacher;
 
+import javax.inject.Inject;
 import java.util.List;
 
-public interface IPersistenceManager {
-    void saveTeachers(List<Teacher> teachers);
+public abstract class IPersistenceManager {
 
-    @SuppressWarnings("unchecked")
-    List<Teacher> loadTeachers();
+    @Inject protected Logger log;
 
-    void saveClasses(List<SchoolClass> classes);
+    public abstract void saveTeachers(List<Teacher> teachers);
 
-    @SuppressWarnings("unchecked")
-    List<SchoolClass> loadClasses();
+    public abstract List<Teacher> loadTeachers();
+
+    public abstract void saveClasses(List<SchoolClass> classes);
+
+    public abstract List<SchoolClass> loadClasses();
 }

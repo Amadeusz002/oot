@@ -7,6 +7,8 @@ import java.util.List;
 
 import pl.edu.agh.logger.Logger;
 
+import javax.inject.Inject;
+
 public class SchoolClass implements Serializable {
 
 	private static final long serialVersionUID = -1458264557391305041L;
@@ -16,6 +18,8 @@ public class SchoolClass implements Serializable {
 
 	private final List<Student> students = new ArrayList<>();
 	private final List<Subject> subjects = new ArrayList<>();
+
+	@Inject private Logger log;
 
 	public SchoolClass(String name, String profile) {
 		this.name = name;
@@ -38,7 +42,7 @@ public class SchoolClass implements Serializable {
 	public void addSubject(Subject subject) {
 		if (!subjects.contains(subject)) {
 			subjects.add(subject);
-			Logger.getInstance().log(
+			log.log(
 					"Added " + subject.toString() + " to " + this.toString());
 		}
 	}
@@ -51,7 +55,7 @@ public class SchoolClass implements Serializable {
 		if (!students.contains(student)) {
 			students.add(student);
 			student.setSchoolClass(this);
-			Logger.getInstance().log(
+			log.log(
 					"Added " + student.toString() + " to class "
 							+ this.toString());
 		}

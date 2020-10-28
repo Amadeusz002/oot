@@ -15,7 +15,7 @@ public class SchoolDAO {
 
     private final List<SchoolClass> classes;
 
-    private IPersistenceManager manager;
+    private final IPersistenceManager manager;
 
     @Inject
     public SchoolDAO(IPersistenceManager manager) {
